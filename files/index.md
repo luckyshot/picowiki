@@ -15,7 +15,7 @@
 
 ## Setup
 
-See [Setup](files/setup.md) for instructions.
+See [Setup](setup) for instructions.
 
 
 ## License & Contact
@@ -24,4 +24,4 @@ See [Setup](files/setup.md) for instructions.
 
 Parsedown by Emanuil Rusev also licensed under a MIT License.
 
-<p style="text-align: center"><img src="static/picowiki-icon.png" style="height:125px;width:125px"></p>
+<p style="text-align: center"><img src="<?=$this->config['app_url']?>static/picowiki-icon.png" style="height:125px;width:125px"></p>
