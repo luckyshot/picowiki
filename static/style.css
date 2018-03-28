@@ -17,6 +17,9 @@ h1 {
 p,li,td {
     line-height: 1.66;
 }
+.main {
+    padding-bottom: 33vh;
+}
 .main ul {
     padding-left: 1em;
 }
