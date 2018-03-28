@@ -32,11 +32,12 @@ PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of cod
 
 - Checking for broken links (links to pages that don't exist yet)
 - Code snippets to load YouTube videos or Google Maps, etc.
-- Sitemap generator
-- Auto-translate
 - Web-based file editor to edit files directly via browser
 - Themes
 - Password-protected access or specific pages
+- Auto-link keywords that match a file
+- Auto-translate
+- Sitemap generator
 
 If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours or days.
 
