@@ -1,8 +1,8 @@
-# <img src="static/picowiki-icon.png" style="height:1em;width:1em"> PicoWiki
+# <img src="static/picowiki-favicon.png" alt=""> PicoWiki
 
 **_PicoWiki is a super tiny and simple file-based Wiki system._**
 
-<p style="text-align: center"><img src="static/screenshot.jpg"></p>
+<p style="text-align: center"><img src="static/screenshot.jpg" alt="Screenshot of the main page of PicoWiki"></p>
 
 
 ## Features
@@ -41,4 +41,4 @@ If you'd like to **contribute** please do, I am quite active on Github and usual
 
 When I say it's tiny I mean this, the whole app is just this code:
 
-<img src="static/screenshot-code.jpg">
+<img src="static/screenshot-code.jpg" alt="Screenshot of the code of PicoWiki where you can see that it is less than 100 lines of code">
