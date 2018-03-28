@@ -36,6 +36,7 @@ PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of cod
 - Auto-translate
 - Web-based file editor to edit files directly via browser
 - Themes
+- Password-protected access or specific pages
 
 If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours or days.
 
