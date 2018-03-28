@@ -1,6 +1,8 @@
-# PicoWiki
+# <img src="static/picowiki-icon.png" style="height:1em;width:1em"> PicoWiki
 
 **_PicoWiki is a super tiny and simple file-based Wiki system._**
+
+<p style="text-align: center"><img src="static/screenshot.jpg"></p>
 
 
 ## Features
@@ -24,4 +26,19 @@ See [Setup](files/setup.md) for instructions.
 
 Parsedown by Emanuil Rusev also licensed under a MIT License.
 
-<p style="text-align: center"><img src="static/picowiki-icon.png" style="height:125px;width:125px"></p>
+## Contributing
+
+PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of code, ready to be extended. New features I can think of right (through plugins ideally) now are:
+
+- Checking for broken links (links to pages that don't exist yet)
+- Code snippets to load YouTube videos or Google Maps, etc.
+- Sitemap generator
+- Auto-translate
+- Web-based file editor to edit files directly via browser
+- Themes
+
+If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours or days.
+
+When I say it's tiny I mean this, the whole app is just this code:
+
+<img src="static/screenshot-code.jpg">
