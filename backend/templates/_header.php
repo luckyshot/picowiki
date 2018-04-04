@@ -7,6 +7,7 @@
     <title><?=$this->url?''.ucwords(str_replace(['-','/'],' ',$this->url)).' · ':''?><?=$this->config['app_name']?></title>
     <link rel="stylesheet" href="<?=$this->config['app_url']?>static/style.css">
     <link rel="shortcut icon" href="<?=$this->config['app_url']?>static/picowiki-favicon.png" type="image/png">
+	<?=$this->event('template_header', $this)?>
 </head>
 <body>
 

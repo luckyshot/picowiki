@@ -8,5 +8,7 @@
     </ul>
 </nav>
 
+<?=$this->event('template_footer', $this)?>
+
 </body>
 </html>

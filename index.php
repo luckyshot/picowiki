@@ -5,7 +5,7 @@ $config = [
     'app_url'			=> null, // (auto-detected, although you can manually specify it if you need to)
     'file_path' 		=> __DIR__ . '/files', // no trailing slash
     'file_extension' 	=> 'md',
-    'version'			=> '1.1.0',
+    'version'			=> '1.2.0',
 ];
 
 class PicoWiki

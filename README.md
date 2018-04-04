@@ -33,8 +33,9 @@ Plugins use Event Hooks to attach new features and alter functionality on the ru
 - `run_init`: `$PicoWiki->run()` has been called
 - `url_loaded`: URL has been detected
 - `list_loaded`: File list has been loaded
+- `template_header`: add stuff before the closing `header` HTML tag
 - `view_after`: Just before outputting the page
-
+- `template_footer`: add stuff before the closing `body` HTML tag
 
 ## License & Contact
 
