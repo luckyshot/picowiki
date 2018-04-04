@@ -8,7 +8,8 @@
 - **Markdown** Formatting, links, etc.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- **Extensible** Less than 100 lines of code
+- **Tiny** Less than 100 lines of the core code
+- **Extensible** through Plugins
 - **Fast** Uses very low bandwidth
 - **Powerful** You can use PHP code anywhere
 

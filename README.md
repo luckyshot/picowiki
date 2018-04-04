@@ -10,7 +10,8 @@
 - **Markdown** Formatting, links, etc.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- **Extensible** Less than 100 lines of code
+- **Tiny** Less than 100 lines of the core code
+- **Extensible** through Plugins
 - **Fast** Uses very low bandwidth
 - **Powerful** You can use PHP code anywhere
 
@@ -30,14 +31,14 @@ To disable a plugin, simply move it away from the `plugins` folder (also in a su
 ### Hooks
 
 - `init`: Initialized the PicoWiki Class, just before loading `$config`
-- `config_loaded`: Config has been loaded
-- `plugins_loaded`: Plugins have been loaded
-- `run_init`: `$PicoWiki->run()` has been called
-- `url_loaded`: URL has been detected
-- `list_loaded`: File list has been loaded
-- `template_header`: add stuff before the closing `header` HTML tag
-- `view_after`: Just before outputting the page
-- `template_footer`: add stuff before the closing `body` HTML tag
+- `config_loaded`: Configuration loaded
+- `plugins_loaded`: Plugins loaded
+- `run_init`: Initialized `run()` method
+- `url_loaded`: URL parsed
+- `list_loaded`: File list loaded
+- `template_header`: Add HTML code before the closing `header` HTML tag
+- `view_after`: The file view has been loaded, just before echoing it
+- `template_footer`: Add HTML code before the closing `body` HTML tag
 
 ## License & Contact
 
