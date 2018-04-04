@@ -11,4 +11,4 @@
 </head>
 <body>
 
-<div class="main">
+<div id="main" class="main">
