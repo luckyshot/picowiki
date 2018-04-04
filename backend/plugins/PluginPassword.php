@@ -12,6 +12,7 @@ Class PluginPassword
 		'duration' => 3600*24*30,
 		'cookie_name' => 'picowiki_access_token',
 	];
+	static $version = '1.0.0';
 
 	static function run( $PicoWiki ){
 		if ( !self::$config['enabled'] ){
@@ -70,12 +71,3 @@ Class PluginPassword
 		});
 	}
 }
-
-
-
-
-
-
-
-
-
