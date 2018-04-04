@@ -18,6 +18,21 @@
 See [Setup](setup) for instructions.
 
 
+## Plugins
+
+Plugins use an Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find examples.
+
+
+### Hooks
+
+- `init`: Initialized the PicoWiki Class, just before loading `$config`
+- `config_loaded`: Config has been loaded
+- `plugins_loaded`: Plugins have been loaded
+- `run_init`: `$PicoWiki->run()` has been called
+- `list_loaded`: File list has been loaded
+- `view_after`: Just before outputting the page
+
+
 ## License & Contact
 
 &copy; <?=date('Y')?> [Xavi Esteve](https://xaviesteve.com/). Licensed under [MIT](https://opensource.org/licenses/MIT).
