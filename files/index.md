@@ -13,30 +13,15 @@
 - **Powerful** You can use PHP code anywhere
 
 
+## Plugins enabled
+
+<?php foreach( $this->plugin_list as $plugin ){ ?>
+- <?=pathinfo($plugin)['filename']?>
+
+<?php } ?>
+
 ## Setup
 
-See [Setup](setup) for instructions.
-
-
-## Plugins
-
-Plugins use an Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find examples.
-
-
-### Hooks
-
-- `init`: Initialized the PicoWiki Class, just before loading `$config`
-- `config_loaded`: Config has been loaded
-- `plugins_loaded`: Plugins have been loaded
-- `run_init`: `$PicoWiki->run()` has been called
-- `list_loaded`: File list has been loaded
-- `view_after`: Just before outputting the page
-
-
-## License & Contact
-
-&copy; <?=date('Y')?> [Xavi Esteve](https://xaviesteve.com/). Licensed under [MIT](https://opensource.org/licenses/MIT).
-
-Parsedown by Emanuil Rusev also licensed under a MIT License.
+See [Setup](setup) for instructions and check the [full documentation](https://github.com/luckyshot/picowiki#readme) to learn about plugins and more.
 
 <p style="text-align: center"><img src="<?=$this->config['app_url']?>static/picowiki-icon.png" style="height:125px;width:125px"></p>
