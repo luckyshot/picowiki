@@ -36,9 +36,9 @@ class PicoWiki
      */
     public function run($url = null)
     {
-        $this->event('run_init');
+        $this->event('run_init', $this);
         $this->url = preg_replace('/[^a-z0-9-\/]/', '', strtolower($url));
-
+        $this->event('url_loaded', $this);
         $this->file_list = $this->listFiles($this->config['file_path'].'/*.'.$this->config['file_extension']);
         $file_path = $this->getFilePath($this->url);
         $this->event('list_loaded', $this);

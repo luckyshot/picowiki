@@ -22,7 +22,7 @@ See [Setup](files/setup.md) for instructions.
 
 ## Plugins
 
-Plugins use Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find examples.
+Plugins use Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find available plugins.
 
 
 ### Hooks
@@ -31,6 +31,7 @@ Plugins use Event Hooks to attach new features and alter functionality on the ru
 - `config_loaded`: Config has been loaded
 - `plugins_loaded`: Plugins have been loaded
 - `run_init`: `$PicoWiki->run()` has been called
+- `url_loaded`: URL has been detected
 - `list_loaded`: File list has been loaded
 - `view_after`: Just before outputting the page
 
