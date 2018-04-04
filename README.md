@@ -24,6 +24,8 @@ See [Setup](files/setup.md) for instructions.
 
 Plugins use Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find available plugins.
 
+To disable a plugin, simply move it away from the `plugins` folder (also in a subfolder such as `plugins/deactivated`).
+
 
 ### Hooks
 
@@ -51,7 +53,6 @@ PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of cod
 - Code snippets to load YouTube videos or Google Maps, etc.
 - Web-based file editor to edit files directly via browser
 - Themes
-- Auto-link keywords that match a file
 - Auto-translate
 - Sitemap generator
 
