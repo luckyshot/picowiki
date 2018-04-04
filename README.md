@@ -45,7 +45,7 @@ Parsedown by Emanuil Rusev also licensed under a MIT License.
 
 PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of code, ready to be extended. New features I can think of right (through plugins) now are:
 
-- Checking for broken links (links to pages that don't exist yet)
+- Report for checking for broken links (links to pages that don't exist yet), Orphan pages, etc.
 - Code snippets to load YouTube videos or Google Maps, etc.
 - Web-based file editor to edit files directly via browser
 - Themes
