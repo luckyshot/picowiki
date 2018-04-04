@@ -13,7 +13,7 @@
 - **Powerful** You can use PHP code anywhere
 
 
-## Plugins enabled
+## Available Plugins
 
 <?php foreach( $this->plugin_list as $plugin ){ ?>
 - <?=pathinfo($plugin)['filename']?>
