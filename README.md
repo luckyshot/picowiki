@@ -49,7 +49,6 @@ PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of cod
 - Code snippets to load YouTube videos or Google Maps, etc.
 - Web-based file editor to edit files directly via browser
 - Themes
-- Password-protected access or specific pages
 - Auto-link keywords that match a file
 - Auto-translate
 - Sitemap generator
