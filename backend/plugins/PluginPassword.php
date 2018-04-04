@@ -13,7 +13,7 @@ Class PluginPassword
 		'cookie_name' => 'picowiki_access_token',
 		'cookie_path' => '/',
 	];
-	static $version = '1.1.0';
+	static $version = '1.1.1';
 
 	static function run( $PicoWiki ){
 		if ( !self::$config['enabled'] ){
@@ -77,7 +77,7 @@ Class PluginPassword
 
 		$PicoWiki->event('url_loaded', self::$config, function($PicoWiki) {
 			if ( $PicoWiki->url === 'logout' ){
-        		setcookie(self::$config['cookie_name'], null, -1, self::$config['cookie_path']);
+        		setcookie(self::$config['cookie_name'], null, time() - 3600, self::$config['cookie_path']);
         		unset( $_COOKIE[ self::$config['cookie_name'] ] );
         		header("Location: ".$PicoWiki->config['app_url']);
 			}
