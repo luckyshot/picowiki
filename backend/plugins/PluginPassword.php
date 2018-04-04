@@ -7,7 +7,7 @@ Password protected access. Enable it by turning $config['enabled'] to true
 Class PluginPassword
 {
 	static $config = [
-		'enabled' => true,
+		'enabled' => false,
 		'access_token' => 'vdlQVsW5XZr5kLVlARAJDZUnTQFDbfBAcoEW77n9ajIAiRIOl1NqHPhJiZBlRc0j',
 		'duration' => 3600*24*30,
 		'cookie_name' => 'picowiki_access_token',
