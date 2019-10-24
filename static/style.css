@@ -68,10 +68,8 @@ blockquote p {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .3;
-    font-size: .8em;
+    font-size: 1.1em;
     height: 100vh;
-    background: #fff;
 }
 .nav-main:hover {
     opacity: 1;
@@ -79,36 +77,45 @@ blockquote p {
 .nav-main ul {
     margin: 0;
     padding: 10px;
+    background: rgba(255, 255, 255, 0.99);
 }
 .nav-main li {
     list-style: none;
 }
 .nav-main a {
     display: block;
-    width: 10em;
+    width: 100%;
     white-space: nowrap;
     color: #afaf86;
-	padding: 2px 0;
+	padding: 2px;
 }
 .nav-main a:before {
     content: '/';
 }
+
+/* Menu */
+#nav-toggle {
+    display: inline-block;
+    padding: 10px;
+    line-height: 1;
+    font-size: 2rem;
+    color: #afaf86;
+    opacity: .5;
+    cursor: pointer;
+}
+#nav-checkbox{
+    display: none;
+}
+.nav-main ul {
+    display: none;
+}
+#nav-checkbox:checked ~ ul {
+    display: block
+}
+
 @media all and (max-width: 960px){
-    .nav-main {
-        overflow: hidden;
-        background: #ccc;
-        width: 0;
+    .nav-main ul {
         z-index: 1;
         padding: 10px;
-    }
-    .nav-main:hover {
-        background: #fbfbfb;
-        width: auto;
-    }
-    .nav-main ul:before {
-        content: 'Index';
-        text-transform: uppercase;
-        opacity: .5;
-        font-size: .66em;
     }
 }
