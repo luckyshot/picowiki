@@ -88,6 +88,7 @@ blockquote p {
     width: 10em;
     white-space: nowrap;
     color: #afaf86;
+	padding: 2px 0;
 }
 .nav-main a:before {
     content: '/';
