@@ -40,11 +40,18 @@ To disable a plugin, simply move it away from the `plugins` folder (also in a su
 - `view_after`: The file view has been loaded, just before echoing it
 - `template_footer`: Add HTML code before the closing `body` HTML tag
 
+
+## Requirements
+
+- PHP 5.4 or above
+
+
 ## License & Contact
 
-&copy; <?=date('Y')?> [Xavi Esteve](https://xaviesteve.com/). Licensed under [MIT](https://opensource.org/licenses/MIT).
+&copy; 2018-2019 [Xavi Esteve](https://xaviesteve.com/). Licensed under [MIT](https://opensource.org/licenses/MIT).
 
 Parsedown by Emanuil Rusev also licensed under a MIT License.
+
 
 ## Contributing
 
