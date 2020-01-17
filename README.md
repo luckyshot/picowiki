@@ -10,8 +10,8 @@
 - **Markdown** Formatting, links, etc.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- **Tiny** Less than 100 lines of the core code
-- **Extensible** through Plugins
+- **Tiny** Main code has less than 100 lines
+- **Extensible** via Plugins
 - **Fast** Uses very low bandwidth
 - **Powerful** You can use PHP code anywhere
 
@@ -25,7 +25,7 @@ See [Setup](files/setup.md) for instructions.
 
 Plugins use Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find available plugins.
 
-To disable a plugin, simply move it away from the `plugins` folder (also in a subfolder such as `plugins/deactivated`).
+To disable a plugin, simply move it away from the `plugins` folder (i.e. in a subfolder such as `plugins/deactivated`).
 
 
 ### Hooks
@@ -36,9 +36,9 @@ To disable a plugin, simply move it away from the `plugins` folder (also in a su
 - `run_init`: Initialized `run()` method
 - `url_loaded`: URL parsed
 - `list_loaded`: File list loaded
-- `template_header`: Add HTML code before the closing `header` HTML tag
+- `template_header`: Add HTML code before the closing `</header>` HTML tag
 - `view_after`: The file view has been loaded, just before echoing it
-- `template_footer`: Add HTML code before the closing `body` HTML tag
+- `template_footer`: Add HTML code before the closing `</body>` HTML tag
 
 
 ## Requirements
@@ -52,6 +52,8 @@ To disable a plugin, simply move it away from the `plugins` folder (also in a su
 
 Parsedown by Emanuil Rusev also licensed under a MIT License.
 
+Some plugins made by their respective authors.
+
 
 ## Contributing
 
@@ -64,8 +66,8 @@ PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of cod
 - Auto-translate
 - Sitemap generator
 
-If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours or days.
+If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours/days. Any code submitted will follow the same license as PicoWiki.
 
-When I say it's tiny I mean this, the whole app is just this code:
+It's easy to contribute! When I say PicoWiki is tiny I mean it 😊 The whole app is just this code:
 
 <img src="static/screenshot-code.jpg" alt="Screenshot of the code of PicoWiki where you can see that it is less than 100 lines of code">
