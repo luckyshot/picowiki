@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><?=$this->url?''.ucwords(str_replace(['-','/'],' ',$this->url)).' · ':''?><?=$this->config['app_name']?></title>
+  <link rel="stylesheet" href="<?=$this->config['app_url']?>static/style.css">
+  <link rel="shortcut icon" href="<?=$this->config['app_url']?>static/picowiki-favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="<?= $this->config['app_url']?>static/mirrormark/css/mirrormark.package.min.css" rel="stylesheet" />
+  <script src="<?= $this->config['app_url']?>static/mirrormark/js/mirrormark.package.min.js"></script>
+  <style>
+.mirrormark-toolbar .save a:before {
+  content: "\f0c7";
+}
+.mirrormark-toolbar li.save {
+  float: right;
+}
+
+  </style>
+
+  <?=$this->event('template_header', $this)?>
+</head>
+<body>
+
+<div id="main" class="main">
+  <?= $this->html ?>
+</div>
+<div id="source" class="editor">
+  <form method="POST" id="edform">
+    <input type="hidden" name="payload" id="payload">
+    <input type="hidden" name="action" value="save">
+    <textarea id="srcedit">
+<?= htmlspecialchars($this->source) ?>
+    </textarea>
+  </form>
+  <script>
+    textarea1 = mirrorMark(document.getElementById("srcedit"), {
+      showToolbar: true
+    });
+    textarea1.registerActions({
+      "save": function() {
+	var txt = textarea1.cm.getDoc().getValue();
+	document.getElementById("payload").value = txt;
+	document.getElementById("edform").submit();
+      }
+    });
+    textarea1.registerTools([
+      { name: "save", action: "save" }
+    ]);
+    textarea1.registerKeyMaps({ "Cmd-S": "save" });
+
+
+    textarea1.render();
+    document.getElementById("source").style.display = "none";
+  </script>
+</div>
+<?=$this->event('template_footer', $this)?>
+
+<script>
+function toggle_element(id) {
+  var x = document.getElementById(id)
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function toggle_source() {
+  toggle_element("source");
+  toggle_element("main");
+}
+</script>
+
+<nav id="nav-main" class="nav-main">
+  <input type="checkbox" id="nav-checkbox">
+  <label for="nav-checkbox" id="nav-toggle">☰</label>
+  <ul>
+    <?php foreach( $this->file_list as $file ){ ?>
+	<li><a href="<?=$this->config['app_url'].$file?>"><?=$file?></a></li>
+    <?php } ?>
+  </ul>
+</nav>
+
+<p><a href="javascript:;" id="toggle" onclick="toggle_source()">Toggle source</a></p>
+
+<hr/>
+<pre>
+  <?php
+    echo yaml_emit($this->config);
+    print_r($_SERVER);
+    print_r($_POST);
+  ?>
+  VERSION: <?= PicoWiki::VERSION(); ?>
+</pre>
+</body>
+</html>

@@ -24,16 +24,32 @@ p,li,td {
 .main {
     padding-bottom: 33vh;
 }
+/*
 .main ul {
     padding-left: 1em;
 }
-.main li {
+
+.main ul li {
     list-style: none;
 }
-.main li:before {
+.main ul li:before {
     content: '•';
     margin-right: .5em;
     color: #afaf86;
+}
+
+.main ol li {
+    list-style: decimal;
+}
+
+.main ol li:before {
+    margin-right: .5em;
+    color: #afaf86;
+}
+*/
+
+table, th, td {
+  border: 1px solid;
 }
 code {
     color: #af0b0b;

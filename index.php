@@ -1,12 +1,15 @@
 <?php
 
-$config = [
+if (!file_exists(__DIR__.'/config.yaml')) {
+  $config = [
     'app_name'			=> 'PicoWiki',
     'app_url'			=> null, // (auto-detected, although you can manually specify it if you need to)
     'file_path' 		=> __DIR__ . '/files', // no trailing slash
-    'file_extension' 	=> 'md',
-    'version'			=> '1.2.0',
-];
+    'file_extension' 		=> 'md',
+  ];
+} else {
+  $config = yaml_parse_file(__DIR__.'/config.yaml');
+}
 
 class PicoWiki
 {
@@ -15,14 +18,19 @@ class PicoWiki
     public $plugin_list = [];
     public $url = null;
     public $html = null;
+    public $source = null;
     public $events = [];
+
+    static public function VERSION() {
+      return trim(file_get_contents(__DIR__.'/VERSION'));
+    }
 
     public function __construct($config)
     {
         $this->event('init', $this);
         $this->config = $config;
         if (!$this->config['app_url']) {
-            $this->config['app_url'] = '//'.$_SERVER['HTTP_HOST'].str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+	  $this->config['app_url'] = '//'.$_SERVER['HTTP_HOST'].str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
         }
         $this->event('config_loaded', $this);
         $this->loadPlugins();
@@ -36,13 +44,17 @@ class PicoWiki
      */
     public function run($url = null)
     {
-        $this->event('run_init', $this);
-        $this->url = preg_replace('/[^a-z0-9-\/]/', '', strtolower($url));
-        $this->event('url_loaded', $this);
-        $this->file_list = $this->listFiles($this->config['file_path'].'/*.'.$this->config['file_extension']);
-        $file_path = $this->getFilePath($this->url);
-        $this->event('list_loaded', $this);
-        $this->view($file_path);
+      $this->event('run_init', $this);
+      $this->url = preg_replace('/[^a-z0-9-\/]/', '', strtolower($url));
+      $this->event('url_loaded', $this);
+      $this->file_list = $this->listFiles($this->config['file_path'].'/*.'.$this->config['file_extension']);
+      $file_path = $this->getFilePath($this->url);
+      $this->event('list_loaded', $this);
+      if (count($_POST)) {
+	$this->post($file_path);
+      } else {
+	$this->view($file_path);
+      }
     }
 
     /**
@@ -110,13 +122,48 @@ class PicoWiki
      */
     protected function view($file_path)
     {
-        require __DIR__.'/backend/templates/_header.php';
-        ob_start();
-        require $file_path;
-        $this->html = ob_get_clean();
-        $this->html = $this->event('view_after', $this);
-        echo $this->html;
-        require __DIR__.'/backend/templates/_footer.php';
+      $this->html = $this->source = file_get_contents($file_path);
+      $this->html = $this->event('view_after', $this);
+      require __DIR__.'/backend/templates/layout.html';
+    }
+    /**
+     * Handle post actions
+     *
+     * @param string $file_path full path to the Markdown file
+     */
+    protected function post($file_path)
+    {
+      if (empty($_POST['action'])) die("No action in POST");
+
+      switch (strtolower($_POST['action'])) {
+	case 'save':
+	  $this->save($file_path);
+	  break;
+	default:
+	  die('Unknown action: '.$_POST['action']);
+      }
+    }
+    /**
+     * Handle save action
+     */
+    protected function save($file_path)
+    {
+      if (empty($_POST['payload'])) die("No payload!");
+      if (!dirname($file_path)) {
+	if (mkdir(dirname($file_path),0777,true) === false)
+	  die("Unable to create: $file_path");
+      }
+      if (file_put_contents($file_path,$_POST['payload']) === false)
+	die("Error saving to: $file_path");
+
+      header('Location: '.$_SERVER['REQUEST_URI']);
+
+      echo '<a href="'.$_SERVER['REQUEST_URI'].'">OK!</a>';
+
+      echo '<pre>';
+      echo "file_path: $file_path\n";
+      print_r($_POST);
+      echo '</pre>';
     }
 
     /**

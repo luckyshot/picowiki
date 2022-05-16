@@ -1,7 +1,8 @@
-# PicoWiki
+# PicoWikiEx
 
 **_PicoWiki is a super tiny and simple file-based Wiki system._**
 
+blah blah blah
 
 ## Features
 
@@ -25,4 +26,7 @@
 
 See [Setup](setup) for instructions and check the [full documentation](https://github.com/luckyshot/picowiki#readme) to learn about plugins and more.
 
-<p style="text-align: center"><img src="<?=$this->config['app_url']?>static/picowiki-icon.png" style="height:125px;width:125px"></p>
+
+<p style="text-align: center">
+ <img src="<?=$this->config['app_url']?>static/picowiki-icon.png" style="height:125px;width:125px">
+</p>

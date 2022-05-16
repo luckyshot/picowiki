@@ -1,0 +1,213 @@
+.cm-s-mirrormark .cm-m-markdown {
+  color: #000;
+  font-family: sans-serif;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-header {
+  font-family: Menlo, Consolas, Monaco, 'Andale Mono', monospace;
+  font-weight: bold;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-header-1 {
+  font-size: 28px;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-header-2 {
+  font-size: 22px;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-header-2 {
+  font-size: 18px;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-quote {
+  color: #888;
+  background-color: rgba(128, 128, 128, 0.05);
+  padding: 5px;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-quote,
+.cm-s-mirrormark .cm-m-markdown.cm-string {
+  color: #888;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-tag,
+.cm-s-mirrormark .cm-m-markdown.cm-link {
+  color: #444;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-comment {
+  color: #a50;
+  font-family: Menlo, Consolas, Monaco, 'Andale Mono', monospace;
+}
+.cm-s-mirrormark .cm-m-markdown.cm-m-xml,
+.cm-s-mirrormark .cm-m-markdown.cm-bracket {
+  color: #170;
+  font-family: inherit;
+}
+.cm-s-mirrormark.CodeMirror.CodeMirror-has-preview .CodeMirror-scroll {
+  display: none;
+}
+.cm-s-mirrormark.CodeMirror.CodeMirror-has-preview .CodeMirror-preview {
+  display: block;
+}
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview {
+  display: none;
+  height: auto !important;
+  overflow: visible !important;
+  padding: 30px 4%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview h1,
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview h2,
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview h3 {
+  font-fami: Menlo, Consolas, Monaco, 'Andale Mono', monospace;
+}
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview pre,
+.cm-s-mirrormark.CodeMirror .CodeMirror-preview code {
+  font-family: Menlo, Consolas, Monaco, 'Andale Mono', monospace;
+}
+.cm-s-mirrormark.CodeMirror .CodeMirror-fullscreen .CodeMirror-preview {
+  height: 100% !important;
+  overflow: scroll !important;
+}
+.mirrormark-toolbar li > a {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.mirrormark-toolbar li > a.pull-left {
+  margin-right: .3em;
+}
+.mirrormark-toolbar li > a.pull-right {
+  margin-left: .3em;
+}
+.mirrormark-toolbar .bold a:before {
+  content: "\f032";
+}
+.mirrormark-toolbar .italicize a:before {
+  content: "\f033";
+}
+.mirrormark-toolbar .blockquote a:before {
+  content: "\f10d";
+}
+.mirrormark-toolbar .strikethrough a:before {
+  content: "\f0cc";
+}
+.mirrormark-toolbar .link a:before {
+  content: "\f0c1";
+}
+.mirrormark-toolbar .image a:before {
+  content: "\f03e";
+}
+.mirrormark-toolbar .unorderedList a:before {
+  content: "\f03a";
+}
+.mirrormark-toolbar .orderedList a:before {
+  content: "\f0cb";
+}
+.mirrormark-toolbar .fullScreen a:before {
+  content: "\f065";
+}
+.mirrormark-toolbar .preview a:before {
+  content: "\f15b";
+}
+.cm-s-mirrormark.CodeMirror-fullscreen .mirrormark-toolbar .fullScreen a:before {
+  content: "\f066";
+}
+.cm-s-mirrormark.CodeMirror-has-preview .mirrormark-toolbar .preview a:before {
+  content: "\f016";
+}
+/* Toolbar Theme */
+.mirrormark-toolbar {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  /* First level */
+}
+.mirrormark-toolbar li {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.mirrormark-toolbar li.fullScreen,
+.mirrormark-toolbar li.preview {
+  float: right;
+}
+.mirrormark-toolbar li.has-nested:after {
+  content: '\2304';
+  color: #888;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 11px;
+  transform: scale(1.3, 1);
+}
+.mirrormark-toolbar li a {
+  background-color: #fff;
+  color: #888;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  transition: color .2s linear;
+  width: 40px;
+}
+.mirrormark-toolbar li:hover a,
+.mirrormark-toolbar li:hover.has-nested:after {
+  color: #000;
+}
+.mirrormark-toolbar li:hover ul {
+  display: block;
+}
+.mirrormark-toolbar li ul {
+  background: #e5e5e5;
+  display: none;
+  position: absolute;
+  top: 41px;
+  width: 150px;
+  z-index: 1000;
+}
+.mirrormark-toolbar li ul li {
+  float: none;
+  width: 100%;
+}
+.mirrormark-toolbar li ul li a {
+  background: transparent;
+  color: #888 !important;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  height: auto;
+  line-height: normal;
+  padding: .25rem .75rem;
+  text-align: left;
+  width: auto;
+}
+.mirrormark-toolbar li ul li:hover a {
+  color: black !important;
+}
+.cm-s-mirrormark {
+  font: 16px/1.7 Menlo, Consolas, Monaco, 'Andale Mono', monospace;
+  box-sizing: border-box;
+  height: auto;
+  margin: auto;
+  position: relative;
+  z-index: 0;
+}
+.cm-s-mirrormark .CodeMirror-scroll {
+  height: auto !important;
+  overflow: visible !important;
+  padding: 30px 4%;
+  box-sizing: border-box;
+}
+.cm-s-mirrormark.CodeMirror-fullscreen .CodeMirror-scroll {
+  height: 100% !important;
+  overflow: scroll !important;
+}
+.cm-s-mirrormark pre.CodeMirror-placeholder {
+  color: #999;
+}
