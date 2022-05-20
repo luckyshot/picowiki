@@ -1,5 +1,7 @@
-# Setup
-
+---
+title: Setup
+xyz: one
+---
 Copy and paste the `/picowiki/` folder to your server. **Boom, done.**
 
 Now you are ready to start creating and editing Markdown files in the `/files/` folder.

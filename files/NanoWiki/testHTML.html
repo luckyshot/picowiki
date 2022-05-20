@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <!-- texts in meta tags are assumed to be url encoded -->
+    <!--    Use "%22" to insert a quote (") -->
+    <!--    Use "%25" to insert a "%" -->
+    <title>Test HTML document</title>
+    <meta name="sample" content="meta-data">
+    <!--meta name="example-key" content="example-value"-->
+  </head>
+  <body>
+<h2>wiki links</h2>
+    <ul>
+      <li>[[NanoWiki]]</li>
+      <li>[[NanoWiki/testcode.md target="_blank"|testcode in a new window]]</li>
+      <li>[[]] shouldn't work</li>
+      <li>{{NanoWiki/static/picowiki-favicon.png}}</li>
+      <li>{{NanoWiki/static/picowiki-favicon.png width=32 height=32}}</li>
+      <li>[[not-found.md]]</li>
+      <li>https://www.php.net/manual/en/functions.arguments.php</li>
+      <li>{{NanoWiki/static/picowiki-favicon.png|PicoWiki icon}}</li>
+    </ul>
+    <h2>Emojis</h2>
+    <ul>
+      <li>(y)</li>
+      <li>(n)</li>
+      <li>:rocket:</li>
+    </ul>
+    <h2>vars plugin</h2>
+    <ul>
+      <li> $meta.file-path$ </li>
+      <li> $config.app_url$ </li>
+      <li> $url </li>
+      <li> $tags$ </li>
+      <li> $meta.file-tags$ </li>
+    </ul>
+    <hr>
+    $attachments$
+    $plugins$
+    <h2>Includes</h2>
+    <p>Including more.html</p>
+    $include: NanoWiki/more.html$
+    <p>Including non-existing file </p>
+    $include: not-found.html$
+  </body>
+</html>

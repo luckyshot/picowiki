@@ -1,32 +1,39 @@
-# PicoWikiEx
+---
+title: NanoWiki
+---
+**_NanoWiki is a small file-based Wiki system._**
 
-**_PicoWiki is a super tiny and simple file-based Wiki system._**
+__NanoWiki__ is based on [PicoWiki](https://github.com/luckyshot/picowiki).
+You can find its original README file [[NanoWiki/README-orig.md|here]].
 
-blah blah blah
-
-## Features
+# Features
 
 - **Markdown** Formatting, links, etc.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- **Tiny** Less than 100 lines of the core code
 - **Extensible** through Plugins
-- **Fast** Uses very low bandwidth
-- **Powerful** You can use PHP code anywhere
 
+# Available Plugins
 
-## Available Plugins
+$plugins$
 
-<?php foreach( $this->plugin_list as $plugin ){ ?>
-- <?=pathinfo($plugin)['filename']?>
+# Setup
 
-<?php } ?>
+See [[NanoWiki/setup.md|Setup]] for instructions and check the
+[[NanoWiki/README.md|README]] to learn about plugins and more.
 
-## Setup
+# Additional documentation
 
-See [Setup](setup) for instructions and check the [full documentation](https://github.com/luckyshot/picowiki#readme) to learn about plugins and more.
+- [[NanoWiki/CHANGES.md|Change Log]]
+- [[NanoWiki/backlog.md|Backlog]]
+
+# Test files
+
+- [[NanoWiki/testcode.md|test document]]
+- [[NanoWiki/testHTML.html|test HTML document]]
 
 
 <p style="text-align: center">
- <img src="<?=$this->config['app_url']?>static/picowiki-icon.png" style="height:125px;width:125px">
+ <img src="$config.app_url$/static/picowiki-icon.png" style="height:125px;width:125px">
 </p>
+

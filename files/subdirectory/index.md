@@ -1,3 +1,5 @@
 # Subdirectory
 
-This is a subdirectory that links back to [Setup](setup), [Homepage](index), [Another file](subdirectory/another-file) and a [file that doesn't exist](not-found).
+This is a subdirectory that links back to [[NanoWiki/setup.md|Setup]],
+[Homepage]($config.app_url$), [[subdirectory/another-file.md|Another file]]
+and a [[not-found.md|file that doesn't exist]]
