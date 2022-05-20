@@ -3,7 +3,7 @@ class ParsedownExtension extends ParsedownToC {
   const VERSION = '0.0.0';
 
   static $graphviz_modes = [ 'dot', 'neato', 'fdp', 'sfdp', 'twopi', 'circo' ];
-  public $headown = 1;
+  public $headown = 0;
   public $gfx_fmt = 'svg'; # Use: 'svg' or 'png'
 
   function __construct() {
@@ -17,8 +17,6 @@ class ParsedownExtension extends ParsedownToC {
     $this->inlineMarkerList .= '=';
     $this->InlineTypes['\\'][] = 'ForcedBr';
     $this->inlineMarkerList .= '\\';
-
-    $this->BlockTypes['!'][] = 'Headown';
   }
   protected function inlineForcedBr($excerpt) {
     //~ echo '<pre>'.htmlspecialchars(print_r($excerpt,true)).'</pre>';
@@ -294,9 +292,7 @@ class ParsedownExtension extends ParsedownToC {
   #
   # Header
 
-
   protected function blockHeader($Line) {
-
     if (isset($Line['text'][1])) {
       if (trim($Line['text']) == '#++') {
 	$this->headown++;
@@ -305,22 +301,34 @@ class ParsedownExtension extends ParsedownToC {
 	$this->headown--;
 	return ['hidden' => true];
       }
-
-      $level = $this->headown;
-      while (isset($Line['text'][$level]) and $Line['text'][$level] === '#') 	{
-	$level ++;
+      $Block = parent::blockHeader($Line);
+      if (!empty($Block)) {
+	if ($this->headown == 0) return $Block; // Trivial case!
+	if (isset($Block['element'])) {
+	  if (isset($Block['element']['name']) && preg_match('/^h(\d*)$/', $Block['element']['name'], $mv)) {
+	    $level = intval($mv[1]) + $this->headown;
+	    if (1 <= $level && $level <= 7) {
+	      $Block['element']['name'] = "h$level";
+	    }
+	  }
+      	}
+	return $Block;
       }
-      if ($level > 6) return;
-      $text = trim($Line['text'], '# ');
-      $Block = array(
-	  'element' => array(
-	      'name' => 'h' . min(6, $level),
-	      'text' => $text,
-	      'handler' => 'line',
-	  ),
-      );
-      return $Block;
     }
+
+      //~ $level = $this->headown;
+      //~ while (isset($Line['text'][$level]) and $Line['text'][$level] === '#') 	{
+	//~ $level ++;
+      //~ }
+      //~ if ($level > 6) return;
+      //~ $text = trim($Line['text'], '# ');
+      //~ $Block = array(
+	  //~ 'element' => array(
+	      //~ 'name' => 'h' . min(6, $level),
+	      //~ 'text' => $text,
+	      //~ 'handler' => 'line',
+	  //~ ),
+      //~ );
   }
 
   #
