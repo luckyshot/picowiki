@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/html_head.html'); ?>
+  <link href="<?= $PicoWiki->mkUrl('static/mirrormark/css/mirrormark.package.min.css') ?>" rel="stylesheet" />
+  <script src="<?= $PicoWiki->mkUrl('static/mirrormark/js/mirrormark.package.min.js')?>"></script>
+  <style>
+    <?php include($dir.'/css/style.css'); ?>
+  </style>
+</head>
+<body>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_header.html'); ?>
+
+  <div id="main" class="main">
+   <?= $PicoWiki->html ?>
+   <p>
+     <a href="javascript:;" id="toggle1" onclick="toggle_source()">Toggle source</a>
+   </p>
+  </div>
+  <?php if ($PicoWiki->isWritable($PicoWiki->meta['file-path'])) { ?>
+    <div id="source" class="editor">
+      <form method="POST" id="edform">
+	<input type="hidden" name="payload" id="payload">
+	<input type="hidden" name="action" value="save">
+	<textarea id="srcedit"><?= htmlspecialchars($PicoWiki->source) ?></textarea>
+      </form>
+      <script>
+	<?php include($dir.'/js/source.js'); ?>
+      </script>
+      <p>
+	<a href="javascript:;" id="save" onclick="cm_save()">Save</a>
+	<a href="javascript:;" id="toggle2" onclick="toggle_source()">Toggle source</a>
+      </p>
+    </div>
+
+  <?php } ?>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_footer.html'); ?>
+</body>
+</html>

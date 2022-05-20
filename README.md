@@ -111,6 +111,11 @@ plugins at all.
   - syntax highlighting with tags in fenced code blocks using
     [hihglight.js](https://highlightjs.org/).
 
+### PluginHTML
+
+This plugin is used to handle HTML files.  Implements a media handler
+interface.
+
 ### PluginIncludes
 
 This plugin can be used to include files into a document before
