@@ -84,7 +84,6 @@ plugins at all.
 
 - Uses [MirrorMark](https://github.com/musicbed/mirrormark) for editing.
 - Markdown Extensions:
-  - Table of contents tag (\[toc\])
   - checkboxes in lists [x] and [ ] markup
   - table span. [See markup](https://github.com/KENNYSOFT/parsedown-tablespan)
   - `~~` ~~strike-through~~ (del)
@@ -108,6 +107,10 @@ plugins at all.
       - graphviz-circo
       - lineart : parsed using [svgbob](https://github.com/ivanceras/svgbob)
     - This will render the given code as a SVG.
+  - Markdown libraries:
+    - [Parsedown](https://github.com/erusev/parsedown)
+    - [PardownExtra](https://github.com/erusev/parsedown-extra)
+    - `[toc]` tag implemented using [TOC](https://github.com/KEINOS/parsedown-extension_table-of-contents/)
   - syntax highlighting with tags in fenced code blocks using
     [hihglight.js](https://highlightjs.org/).
 
@@ -140,6 +143,24 @@ and **after** rendering.
   - `$ attachments$` an unordered HTML list containg links to
     the current document's attachments.
 
+### PluginWikiLinks
+
+Simplified markup for internal links.  It supports:
+
+- hypertext links
+  - `[[` : opening
+  - __url-path__ : relative to `config[file_path]`.
+  - ==space== followed by html attribute tags (if any, can be omitted)
+  - `|` followed by the link text if not specified, defaults to the
+    __url-path__.
+  - `]]` : closing
+- img tags
+  - `{{` : opening
+  - __url-path__ : relative to `config[file_path]`.
+  - ==space== followed by html attribute tags (if any, can be omitted)
+  - `|` followed by the `alt` and `title` text.  Defaults to
+    __url-path__.
+  - `}}` : closing
 
 
 ## License & Contact
