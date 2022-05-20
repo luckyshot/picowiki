@@ -1,0 +1,40 @@
+<?php $PicoWiki->event('template_footer') ?>
+
+<nav id="nav-main" class="nav-main">
+  <input type="checkbox" id="nav-checkbox">
+  <label for="nav-checkbox" id="nav-toggle">☰</label>
+  <ul>
+    <li><a href="<?=$PicoWiki->mkUrl()?>">Home</a></li>
+    <?php foreach( $PicoWiki->file_list as $file ){ ?>
+	<li><a href="<?=$PicoWiki->mkUrl($file)?>"><?=$file?></a></li>
+    <?php } ?>
+  </ul>
+</nav>
+
+<?php
+  if (isset($PicoWiki->meta['file-path']) && basename($PicoWiki->meta['file-path']) == $PicoWiki->config['default_doc']) {
+    if (isset($_GET['tools']) && $_GET['tools']) {
+      echo '<a href="'.$PicoWiki->mkUrl($PicoWiki->url).'">';
+      echo 'Switch to Default View';
+      echo '</a>';
+    } else {
+      echo '<a href="'.$PicoWiki->mkUrl($PicoWiki->url).'?tools=1">';
+      echo 'Switch to Folder View';
+      echo '</a>';
+    }
+  }
+?>
+<hr/>
+<small>
+  <?= $PicoWiki->config['app_name'] ?>: <?= PicoWiki::VERSION(); ?><br/>
+    Copyright &copy; <?=$PicoWiki->meta['year']?> <?=$PicoWiki->config['copyright']?> <br/>
+    All rights reserved<br/>
+</small>
+<pre>
+  <?php
+    //~ print_r($_SERVER);
+    //~ print_r($_POST);
+    print_r($PicoWiki->meta);
+  ?>
+</pre>
+

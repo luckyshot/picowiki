@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/html_head.html'); ?>
+</head>
+<body>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_header.html'); ?>
+
+  <div id="main" class="main">
+    <?php
+      if (count($lst) == 0) {
+	echo '<p>Empty folder!</p>';
+      } else {
+	echo '<p>Folder contents</p>';
+	echo '<ul>';
+	foreach ($lst as $fn) {
+	  echo '<li>'.
+	      '<a href="'.$PicoWiki->mkUrl($PicoWiki->url,$fn).'">'.
+	      htmlspecialchars($fn).
+	      '</a></li>';
+	}
+	echo '</ul>';
+      }
+    ?>
+
+    <h1></h1>
+    <p>Go <a href="<?= $PicoWiki->mkUrl()?>">Home</a></p>
+    <hr>
+    <p>
+      Do you want to upload a new file?
+    </p>
+    <form method="post" enctype="multipart/form-data" action="<?=$PicoWiki->url?>">
+      <p>Select file to upload:</p>
+      <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
+      <p><input type="submit" value="Upload File" name="attach"></p>
+      </p>
+      <input type="hidden" name="action" value="attach">
+    </form>
+  </div>
+
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_footer.html'); ?>
+</body>
+</html>

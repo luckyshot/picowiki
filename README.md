@@ -10,10 +10,10 @@
 - **Markdown** Formatting, links, etc.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- **Tiny** Main code has less than 100 lines
+- ~~**Tiny** Main code has less than 100 lines~~
 - **Extensible** via Plugins
-- **Fast** Uses very low bandwidth
-- **Powerful** You can use PHP code anywhere
+- ~~**Fast** Uses very low bandwidth~~
+- ~~**Powerful** You can use PHP code anywhere~~
 
 
 ## Setup
@@ -23,15 +23,18 @@ See [Setup](files/setup.md) for instructions.
 
 ## Plugins
 
-Plugins use Event Hooks to attach new features and alter functionality on the run, a new plugin must have a `run()` method that will be executed whenever you specify. Check out `/backend/plugins/` to find available plugins.
+Plugins are used to implement event hooks and media handlers.
 
-To disable a plugin, simply move it away from the `plugins` folder (i.e. in a subfolder such as `plugins/deactivated`).
+Event Hooks are used to attach new features and alter functionality
+on the run, a new plugin must have a `load()` method that will be
+executed whenever you specify. Check out `/backend/plugins/` to
+find available plugins.
 
+To disable a plugin, simply move it away from the `plugins` folder
+(i.e. in a subfolder such as `plugins/deactivated`).
 
 ### Hooks
 
-- `init`: Initialized the PicoWiki Class, just before loading `$config`
-- `config_loaded`: Configuration loaded
 - `plugins_loaded`: Plugins loaded
 - `run_init`: Initialized `run()` method
 - `url_loaded`: URL parsed
@@ -40,10 +43,41 @@ To disable a plugin, simply move it away from the `plugins` folder (i.e. in a su
 - `view_after`: The file view has been loaded, just before echoing it
 - `template_footer`: Add HTML code before the closing `</body>` HTML tag
 
+### Deprecated hooks
+
+These hooks are deprecated because I don't think they can be hooked by
+plugins at all.
+
+- `init`: Initialized the PicoWiki Class, just before loading `$config`
+- `config_loaded`: Configuration loaded
+
+### Additional hooks
+
+- `error404`: File not found
+- `view_before`: The file view before being processed by the renderer
+- `meta_read_after`: After file meta data and YAML front matter has been read
+- `write_access_error`: handles when the user wants to write to a write-protected URL
+- `read_access_error`: handles when the user wants to access to a read-protected URL
+- `check_readable`: check if user has read access
+- `check_writeable`: check if user has read access
+- `payload_pre`: pre-process payload before saving
+- `meta_write_before`: modify meta data before payload generation
+- `payload_post`: post-process payload before saving
+
 
 ## Requirements
 
-- PHP 5.4 or above
+- PHP 7.4.0 or above
+- svgbob : line-art
+- graphviz : code diag
+
+### PHP Extensions
+
+- fileinfo
+- pecl-yaml
+- dom
+- json
+
 
 
 ## License & Contact
@@ -54,14 +88,16 @@ Parsedown by Emanuil Rusev also licensed under a MIT License.
 
 Some plugins made by their respective authors.
 
-
 ## Contributing
 
-PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of code, ready to be extended. New features I can think of right (through plugins) now are:
+~~PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of code, ready to be extended. New features I can think of right (through plugins) now are:~~
+
+PicoWiki is a single PHP class, ready to be extended. New features I
+can think of right (through plugins) now are:
 
 - Report for checking for broken links (links to pages that don't exist yet), Orphan pages, etc.
 - Code snippets to load YouTube videos or Google Maps, etc.
-- Web-based file editor to edit files directly via browser
+- [x] Web-based file editor to edit files directly via browser
 - Themes
 - Auto-translate
 - Sitemap generator

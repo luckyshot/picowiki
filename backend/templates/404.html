@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/html_head.html'); ?>
+  <?php
+    $upload_path=dirname($PicoWiki->url);
+    if ($upload_path == '.') $upload_path = '';
+    $upload_path = $PicoWiki->mkUrl($upload_path);
+  ?>
+</head>
+<body>
+
+  <div id="main" class="main">
+    <h1>File Not Found</h1>
+    <p>Go <a href="<?= $PicoWiki->mkUrl()?>">Home</a></p>
+    <hr>
+    <p>
+      Do you want to upload a new file?
+    </p>
+    <form method="post" enctype="multipart/form-data" action="<?=$upload_path?>">
+      <p>Select file to upload:</p>
+      <p><input type="file" name="fileToUpload" id="fileToUpload"></p>
+      <p><input type="submit" value="Upload File" name="attach"></p>
+      </p>
+      <input type="hidden" name="action" value="attach">
+    </form>
+    <table>
+      <tr>
+	<th align="left">URL</th>
+	<td><?= $this->url ?></td>
+      </tr>
+      <tr>
+	<th align="left">file_path</th>
+	<td><?= $file_path ?></td>
+      </tr>
+    </table>
+    <pre>
+      <?php print_r($PicoWiki->file_list); ?>
+      <?php print_r($PicoWiki->config); ?>
+      URL: <?= $PicoWiki->url ?>
+    </pre>
+  </div>
+
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_footer.html'); ?>
+</body>
+</html>
