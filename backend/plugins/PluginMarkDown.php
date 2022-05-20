@@ -36,7 +36,7 @@ class PluginMarkDown {
     require_once __DIR__ . '/PluginMarkDown/lib/TOC-1.1.2.php';
     require_once __DIR__ . '/PluginMarkDown/lib/Extension.php';
     $Parsedown = new ParsedownExtension();
-    $Parsedown->headown = 2;
+    $Parsedown->headown = 1;
     return $Parsedown->text($html);
   }
   static function payload_before($PicoWiki,$file_path,$payload) {
