@@ -81,6 +81,7 @@ class PluginHTML {
 	  $hdr .= '    <meta name="'.strtr($k,$tr).'" content="'.strtr($v,$tr).'">'.PHP_EOL;
 	}
       }
+      $hdr .= '    <!--meta name="example-key" content="example-value"-->'.PHP_EOL;
       $hdr .= '  </head>'.PHP_EOL;
     }
     return '<html>'.PHP_EOL.$hdr.'  <body>'.PHP_EOL.trim($body).PHP_EOL.'  </body>'.PHP_EOL.'</html>';
@@ -90,9 +91,7 @@ class PluginHTML {
     $pi = pathinfo($file_path);
     $new_template = self::payload_after($PicoWiki,[
 	  'title' => ucwords($pi['filename']),
-	  'example' => 'Example meta data',
 	],
-	'<h1>'.$pi['filename'].'</h1>'.PHP_EOL.
 	'<p>Sample content</p>'.PHP_EOL);
 
     require $dir.'/templates/404.html';
