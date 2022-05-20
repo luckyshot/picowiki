@@ -507,8 +507,8 @@ class PicoWiki
 	if (mkdir(dirname($file_path),0777,true) === false)
 	  die("Unable to create: $file_path");
       }
-      echo "FILE_PATH: $file_path\n";
-      echo htmlspecialchars($payload);
+      //~ echo "FILE_PATH: $file_path\n";
+      //~ echo htmlspecialchars($payload);
 
       if (file_put_contents($file_path,$payload) === false)
 	die("Error saving to: $file_path");
