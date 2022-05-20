@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/html_head.html'); ?>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="<?= $PicoWiki->mkUrl('static/mirrormark/css/mirrormark.package.min.css')?>" rel="stylesheet" />
+  <script src="<?= $PicoWiki->mkUrl('static/mirrormark/js/mirrormark.package.min.js')?>"></script>
+  <style>
+    <?php include($dir.'/css/style.css'); ?>
+  </style>
+</head>
+<body>
+
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_header.html'); ?>
+
+  <div id="main" class="main">
+    <p>File not found: <?= htmlspecialchars($file_path) ?></p>
+    <p>Go <a href="<?= $PicoWiki->mkUrl()?>">Home</a></p>
+
+    <p><a href="javascript:;" id="toggle" onclick="toggle_source()">Create file?</a></p>
+  </div>
+  <?php if ($PicoWiki->isWritable($file_path)) { ?>
+    <div id="source" class="editor">
+      <form method="POST" id="edform">
+	<input type="hidden" name="payload" id="payload">
+	<input type="hidden" name="action" value="save">
+	<textarea id="srcedit"><?= htmlspecialchars($new_template) ?></textarea>
+      </form>
+      <script>
+	<?php include($dir.'/js/source.js'); ?>
+      </script>
+    </div>
+
+  <?php } ?>
+  <?php include($PicoWiki->config['app_dir'].'/backend/templates/_footer.html'); ?>
+</body>
+</html>

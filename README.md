@@ -1,13 +1,13 @@
 # <img src="static/picowiki-favicon.png" alt=""> PicoWiki
 
-**_PicoWiki is a super tiny and simple file-based Wiki system._**
+**_PicoWiki is a ~~super~~ tiny and simple file-based Wiki system._**
 
 <p style="text-align: center"><img src="static/screenshot.jpg" alt="Screenshot of the main page of PicoWiki"></p>
 
 
-## Features
+# Features
 
-- **Markdown** Formatting, links, etc.
+- ~~**Markdown** Formatting, links, etc.~~
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
 - ~~**Tiny** Main code has less than 100 lines~~
@@ -77,6 +77,39 @@ plugins at all.
 - pecl-yaml
 - dom
 - json
+
+## Plugins
+
+### Markdown Plugin
+
+- Uses [MirrorMark](https://github.com/musicbed/mirrormark) for editing.
+- Markdown Extensions:
+  - Table of contents tag (\[toc\])
+  - checkboxes in lists [x] and [ ] markup
+  - table span. [See markup](https://github.com/KENNYSOFT/parsedown-tablespan)
+  - `~~` ~~strike-through~~ (del)
+  - `++` ++insert++ (ins)
+  - `^^` ^^superscript^^ (sup)
+  - `,,` ,,subscript,, (sub)
+  - `==` ==keyboard== (kbd)
+  - "\\" at the end of the line to generate a line break
+  - headown
+    - header html tags in the content start at H2 (since H1 is used
+      by the wiki's document title.
+    - `#++` and `#--` is used to increment headown level.  (Use this in
+      combination with file includes.
+  - diagrams in fenced code blocks.
+    - Adding to a fenced code block a tag such as:
+      - graphviz-dot
+      - graphviz-neato
+      - graphviz-fdp
+      - graphviz-sfdp
+      - graphviz-twopi
+      - graphviz-circo
+      - lineart : parsed using [svgbob](https://github.com/ivanceras/svgbob)
+    - This will render the given code as a SVG.
+  - syntax highlighting with tags in fenced code blocks using
+    [hihglight.js](https://highlightjs.org/).
 
 
 

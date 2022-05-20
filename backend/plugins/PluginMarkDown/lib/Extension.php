@@ -2,6 +2,10 @@
 class ParsedownExtension extends ParsedownToC {
   const VERSION = '0.0.0';
 
+  static $graphviz_modes = [ 'dot', 'neato', 'fdp', 'sfdp', 'twopi', 'circo' ];
+  public $headown = 1;
+  public $gfx_fmt = 'svg'; # Use: 'svg' or 'png'
+
   function __construct() {
     $this->InlineTypes['^'][] = 'Superscript';
     $this->inlineMarkerList .= '^';
@@ -9,8 +13,27 @@ class ParsedownExtension extends ParsedownToC {
     $this->inlineMarkerList .= ',';
     $this->InlineTypes['+'][] = 'InsertedText';
     $this->inlineMarkerList .= '+';
+    $this->InlineTypes['='][] = 'KbdText';
+    $this->inlineMarkerList .= '=';
+    $this->InlineTypes['\\'][] = 'ForcedBr';
+    $this->inlineMarkerList .= '\\';
 
+    $this->BlockTypes['!'][] = 'Headown';
   }
+  protected function inlineForcedBr($excerpt) {
+    //~ echo '<pre>'.htmlspecialchars(print_r($excerpt,true)).'</pre>';
+    //~ return;
+    if (preg_match('/\\\s*\n/', $excerpt['text'], $matches)) {
+      return [
+	  'extent' => strlen($matches[0]),
+	  'element' => [
+	      'name' => 'br',
+	  ],
+      ];
+    }
+  }
+
+
   protected function inlineSuperscript($excerpt) {
     if (preg_match('/(?:\^\^(?!\^)([^\^ ]*)\^\^(?!\^))/', $excerpt['text'], $matches)) {
       return [
@@ -41,6 +64,18 @@ class ParsedownExtension extends ParsedownToC {
 	  'extent' => strlen($matches[0]),
 	  'element' => [
 	      'name' => 'ins',
+	      'text' => $matches[1],
+	      'function' => 'lineElements',
+	  ],
+      ];
+    }
+  }
+  protected function inlineKbdText($excerpt) {
+    if (preg_match('/(?:==(?!=)([^, ]*)==(?!=))/', $excerpt['text'], $matches)) {
+      return [
+	  'extent' => strlen($matches[0]),
+	  'element' => [
+	      'name' => 'kbd',
 	      'text' => $matches[1],
 	      'function' => 'lineElements',
 	  ],
@@ -161,7 +196,136 @@ class ParsedownExtension extends ParsedownToC {
   * Overrides
   */
   #
+  # Fenced code blocks
+  #
+  protected function blockFencedCodeComplete($Block) {
+    $Block = parent::blockFencedCodeComplete($Block);
+    if (!isset($Block['element']['text']['text']) ||
+	!isset($Block['element']['text']['attributes']['class'])) return $Block;
+
+    $text = $Block['element']['text']['text'];
+    $hclass = $Block['element']['text']['attributes']['class'];
+
+    if (substr($hclass,0,strlen('language-graphviz-')) == 'language-graphviz-') {
+      // Handle graphviz graphics
+      $gmode = substr($hclass,strlen('language-graphviz-'));
+      if (!in_array($gmode, self::$graphviz_modes)) return $Block;
+
+      $proc = proc_open([ $gmode , '-T'.$this->gfx_fmt ],
+			[
+			  0 => ['pipe', 'r'],
+			  1 => ['pipe', 'wb'],
+			  2 => ['pipe', 'w'],
+			],
+			$pipes);
+      if (is_resource($proc)) {
+	fwrite($pipes[0], $text);
+	fclose($pipes[0]);
+
+	$output = stream_get_contents($pipes[1]);
+	fclose($pipes[1]);
+
+	$stderr = stream_get_contents($pipes[2]);
+	fclose($pipes[2]);
+
+	$ret = proc_close($proc);
+
+	//~ echo "gmode: $gmode<br>";
+	//~ echo "ret: $ret<br>";
+	//~ echo "stderr: $stderr<br>";
+
+	if ($output) {
+	  switch ($this->gfx_fmt) {
+	  case 'svg':
+	    $Block['element'] = [
+		'name' => 'div',
+		'rawHtml' => $output,
+	      ];
+	    break;
+	  case 'png':
+	    $Block['element'] = [
+		'name' => 'img',
+		'attributes' => [
+		  'src' => 'data:image/png;base64,'.base64_encode($output),
+		]
+	      ];
+	    break;
+	  }
+	}
+      }
+    } elseif ($hclass == 'language-lineart') {
+      $proc = proc_open([ 'svgbob' ],
+			[
+			  0 => ['pipe', 'r'],
+			  1 => ['pipe', 'wb'],
+			  2 => ['pipe', 'w'],
+			],
+			$pipes);
+      if (is_resource($proc)) {
+	fwrite($pipes[0], $text);
+	fclose($pipes[0]);
+
+	$output = stream_get_contents($pipes[1]);
+	fclose($pipes[1]);
+
+	$stderr = stream_get_contents($pipes[2]);
+	fclose($pipes[2]);
+
+	$ret = proc_close($proc);
+
+	//~ echo "gmode: $gmode<br>";
+	//~ echo "ret: $ret<br>";
+	//~ echo "stderr: $stderr<br>";
+
+	if ($output) {
+	  $Block['element'] = [
+	      'name' => 'div',
+	      'rawHtml' => $output,
+	    ];
+	}
+      }
+    }
+
+
+    return $Block;
+  }
+
+
+  #
+  # Header
+
+
+  protected function blockHeader($Line) {
+
+    if (isset($Line['text'][1])) {
+      if (trim($Line['text']) == '#++') {
+	$this->headown++;
+	return ['hidden' => true];
+      } elseif (trim($Line['text']) == '#--') {
+	$this->headown--;
+	return ['hidden' => true];
+      }
+
+      $level = $this->headown;
+      while (isset($Line['text'][$level]) and $Line['text'][$level] === '#') 	{
+	$level ++;
+      }
+      if ($level > 6) return;
+      $text = trim($Line['text'], '# ');
+      $Block = array(
+	  'element' => array(
+	      'name' => 'h' . min(6, $level),
+	      'text' => $text,
+	      'handler' => 'line',
+	  ),
+      );
+      return $Block;
+    }
+  }
+
+  #
   # List
+  #
   protected function blockList($Line)
   {
       list($name, $pattern) = $Line['text'][0] <= '-' ? array('ul', '[*+-]') : array('ol', '[0-9]{1,9}[.\)]');
