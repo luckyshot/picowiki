@@ -119,6 +119,21 @@ rendering.
 In a new line use: `$include: file $` to include a file.  Note that
 all files are relative to `config[file_path]`.
 
+### PluginVars
+
+This plugin is used to create text substituions.  There are two
+sets of substitutions.  Substitutions done **before**
+and **after** rendering.
+
+- Before rendering:
+  - `$ urls$`: Current url
+  - `$config.key$`: values in the `config` table.  You can define
+     additional variables by adding them to `config.yaml`.
+  - `$meta.key$` : meta values from the current document.
+- After rendering:
+  - `$ plugins$` an unordered HTML list containing loaded plugins.
+  - `$ attachments$` an unordered HTML list containg links to
+    the current document's attachments.
 
 
 
