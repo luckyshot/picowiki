@@ -8,8 +8,11 @@
 
 class PluginEmoji {
   static $version = '1.0.0';
-  static function run( $wiki ) {
-    $wiki->event('view_after', NULL, function($wiki) {
+  static function load( $PicoWiki ) {
+    $PicoWiki->event('view_after', NULL, function($html) use ($PicoWiki) {
+      // doc meta data can be used to skip emoji plugin.
+      if (isset($PicoWiki->meta['no-emoji']) && $PicoWiki->meta['no-emoji']) return $html;
+
       $search_replace = array(
         '(y)'        => '👍',
         '(n)'        => '👎',
@@ -23,6 +26,8 @@ class PluginEmoji {
         ':rocket:'   => '🚀',
         ':metal:'    => '🤘',
         ':star:'     => '⭐',
+	':tent:'     => '⛺',
+	':joy:'      => '🤣',
         '<3'         => '❤', /* ❤️ 💗 */
         /* ADD WHAT YOU LIKE - https://gist.github.com/hkan/264423ab0ee720efb55e05a0f5f90887 */
         ';-)'        => '😉',
@@ -48,8 +53,7 @@ class PluginEmoji {
         '0:-)'       => '😇',
         'O:-)'       => '😇',
       );
-      $wiki->html = str_replace(array_keys($search_replace), $search_replace, $wiki->html);
-      return $wiki;
+      return str_replace(array_keys($search_replace), $search_replace, $html);
     });
   }
 }

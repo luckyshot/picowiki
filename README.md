@@ -162,6 +162,9 @@ Simplified markup for internal links.  It supports:
     __url-path__.
   - `}}` : closing
 
+### PluginEmoji
+
+Simple plugin to add Emoji rendering.
 
 ## License & Contact
 
