@@ -1,25 +1,21 @@
-# <img src="static/picowiki-favicon.png" alt=""> PicoWiki
+# <img src="static/picowiki-favicon.png" alt=""> NanoWiki
 
-**_PicoWiki is a ~~super~~ tiny and simple file-based Wiki system._**
+**_NanoWiki is a small and simple file-based Wiki system_**
+**_based on [PicoWiki](https://github.com/luckyshot/picowiki)_**
 
 <p style="text-align: center"><img src="static/screenshot.jpg" alt="Screenshot of the main page of PicoWiki"></p>
 
 
 # Features
 
-- ~~**Markdown** Formatting, links, etc.~~
+- **Extensible** formatting support.
 - **Install in 2 seconds** Just place a folder in your server
 - **File-based** Easily editable
-- ~~**Tiny** Main code has less than 100 lines~~
-- **Extensible** via Plugins
-- ~~**Fast** Uses very low bandwidth~~
-- ~~**Powerful** You can use PHP code anywhere~~
-
+- **Extensible** evets via Plugins
 
 ## Setup
 
-See [Setup](files/setup.md) for instructions.
-
+See [Setup](files/NanoWiki/setup.md) for instructions.
 
 ## Plugins
 
@@ -168,28 +164,14 @@ Simple plugin to add Emoji rendering.
 
 ## License & Contact
 
-&copy; 2018-2019 [Xavi Esteve](https://xaviesteve.com/). Licensed under [MIT](https://opensource.org/licenses/MIT).
+&copy; 2022 Alejandro Liu.
+Licensed under [MIT](https://opensource.org/licenses/MIT).
+
+
+[PicoWiki](https://github.com/luckyshot/picowiki)
+&copy; 2018-2019 [Xavi Esteve](https://xaviesteve.com/).
+Licensed under [MIT](https://opensource.org/licenses/MIT).
 
 Parsedown by Emanuil Rusev also licensed under a MIT License.
 
 Some plugins made by their respective authors.
-
-## Contributing
-
-~~PicoWiki is a single PHP class with 7 methods, all in less than 100 lines of code, ready to be extended. New features I can think of right (through plugins) now are:~~
-
-PicoWiki is a single PHP class, ready to be extended. New features I
-can think of right (through plugins) now are:
-
-- Report for checking for broken links (links to pages that don't exist yet), Orphan pages, etc.
-- Code snippets to load YouTube videos or Google Maps, etc.
-- [x] Web-based file editor to edit files directly via browser
-- Themes
-- Auto-translate
-- Sitemap generator
-
-If you'd like to **contribute** please do, I am quite active on Github and usually merge Pull Requests in a few hours/days. Any code submitted will follow the same license as PicoWiki.
-
-It's easy to contribute! When I say PicoWiki is tiny I mean it 😊 The whole app is just this code:
-
-<img src="static/screenshot-code.jpg" alt="Screenshot of the code of PicoWiki where you can see that it is less than 100 lines of code">

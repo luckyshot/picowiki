@@ -1,7 +1,7 @@
 <?php
 $config = [
-  'app_name'		=> 'PicoWiki',
-  'title'		=> 'PicoWikiEx',
+  'app_name'		=> 'NanoWiki',
+  'title'		=> 'NanoWiki',
   'app_url'		=> null, // (auto-detected, although you can manually specify it if you need to)
   'file_path' 		=> __DIR__ . '/files', // no trailing slash
   'default_doc'		=> 'index.md',
