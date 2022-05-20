@@ -80,7 +80,7 @@ plugins at all.
 
 ## Plugins
 
-### Markdown Plugin
+### PluginMarkDown
 
 - Uses [MirrorMark](https://github.com/musicbed/mirrormark) for editing.
 - Markdown Extensions:
@@ -110,6 +110,15 @@ plugins at all.
     - This will render the given code as a SVG.
   - syntax highlighting with tags in fenced code blocks using
     [hihglight.js](https://highlightjs.org/).
+
+### PluginIncludes
+
+This plugin can be used to include files into a document before
+rendering.
+
+In a new line use: `$include: file $` to include a file.  Note that
+all files are relative to `config[file_path]`.
+
 
 
 
