@@ -64,9 +64,3 @@ blockquote p {
     text-align: center;
 }
 
-
-.topbar {
-   position: sticky;
-   top: 0;
-   z-index: 100;
-}

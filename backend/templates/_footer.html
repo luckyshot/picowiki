@@ -1,8 +1,7 @@
 <?php $PicoWiki->event('template_footer') ?>
-
 <nav id="nav-main" class="nav-main">
   <input type="checkbox" id="nav-checkbox">
-  <label for="nav-checkbox" id="nav-toggle">☰</label>
+  <label for="nav-checkbox" id="nav-toggle">&#9776;</label>
   <ul>
     <li><a href="<?=$PicoWiki->mkUrl()?>">Home</a></li>
     <?php foreach( $PicoWiki->file_list as $file ){ ?>
@@ -10,6 +9,7 @@
     <?php } ?>
   </ul>
 </nav>
+
 
 <?php
   if (isset($PicoWiki->meta['file-path']) && basename($PicoWiki->meta['file-path']) == $PicoWiki->config['default_doc']) {
