@@ -11,3 +11,5 @@ You can optionally edit `index.php` and customize the Wiki's title and a few mor
 Edit the `favicon.png` and `style.css` to match your branding.
 
 Furthermore, the PHP code is less than 100 lines of code and pretty straight forward to grasp and extend.
+
+<!-- lol -->
