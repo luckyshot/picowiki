@@ -10,7 +10,7 @@ class PluginAutoLink {
 
 	static function run( $wiki ) {
 		$wiki->event('view_after', NULL, function($wiki) {
-			$use_target_blank = TRUE; // CHANGE IF YOU LIKE
+			$use_target_blank = FALSE; // CHANGE IF YOU LIKE
 			$use_nofollow_tag = TRUE; // CHANGE IF YOU LIKE
 
 			$filenames = [];
